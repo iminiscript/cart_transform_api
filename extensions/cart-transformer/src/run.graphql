@@ -1,0 +1,34 @@
+query RunInput {
+  cart {
+    lines {
+      id
+      quantity
+      cost {
+        amountPerQuantity {
+          amount
+          currencyCode
+        }
+        subtotalAmount {
+          amount
+          currencyCode
+        }
+      }
+      attribute {
+        key
+        value
+      }
+      merchandise {
+        ... on ProductVariant {
+          __typename
+          product {
+            title
+            GWP: metafield(namespace: "custom", key: "gwp") {
+              value
+            }
+            handle
+          }
+        }
+      }
+    }
+  }
+}
