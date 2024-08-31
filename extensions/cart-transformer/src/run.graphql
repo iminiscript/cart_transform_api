@@ -13,8 +13,7 @@ query RunInput {
           currencyCode
         }
       }
-      attribute {
-        key
+      GWP_Product: attribute(key: "GWP") {
         value
       }
       merchandise {

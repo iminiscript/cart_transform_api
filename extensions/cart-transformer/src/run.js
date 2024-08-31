@@ -8,8 +8,10 @@ export function run(input) {
       console.log("line:", JSON.stringify(line, null, 2));
       return (
         line.merchandise.__typename === "ProductVariant" &&
-        line.merchandise.product.GWP &&
-        line.merchandise.product.GWP.value === "true"
+        line.merchandise.product.GWP && // Check for GWP presence
+        line.merchandise.product.GWP.value === "true" && // Check if GWP is "true"
+        line.GWP_Product && // Ensure GWP_Product exists
+        line.GWP_Product.value === "GWP" // Check if GWP_Product is "GWP"
       );
     })
     .map(line => ({
